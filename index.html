@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="fr">
+    <meta charset="UTF-8">
+    <title>i2037</title>
+
+    <!-- CSS -->
+    <link href="webroot/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href="webroot/css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="webroot/css/lib/notify.css" type="text/css" rel="stylesheet"/>
+    <link href="webroot/css/lib/Animation.css" type="text/css" rel="stylesheet"/>
+
+    <!-- JS -->
+    <!-- ONLINE -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+
+    <!-- OFFLINE -->
+    <script src="webroot/js/lib/humane.js"></script>
+    <script src="webroot/js/Question.js"></script>
+    <script src="webroot/js/notification.js"></script>
+    <script src="webroot/js/React.js"></script>
+    <script src="webroot/js/QuestionsManager.js"></script>
+
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-md-1">
+                <a href="#myModal" data-toggle="modal">
+                    <button type="button" class="btn btn-default" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                </a>
+                <a href="#myParametersModal" data-toggle="modal">
+                    <button id="btnParams" type="button" class="btn btn-default" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-11">
+                <h1 id="mainTitle" class="main-title txt-center bounceInRight">i2037</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-11 div-center">
+                <div id="questions">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-7 parametizer">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">http://</div>
+                        <input type="text" class="form-control input-center" id="hostURI" placeholder="host URI">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Votre question</h4>
+                    </div>
+                    <div class="modal-body">
+                        <textarea id="answerText" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-info" id="submitNewQuestion" data-dismiss="modal">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
