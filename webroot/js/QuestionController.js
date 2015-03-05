@@ -1,24 +1,9 @@
 var firstQuestion = new Question(0, "Comment sa marche ?");
 var questionsObjectList = [firstQuestion];
-var parametizerIsHidding = true;
 
 $(function() {
-    $("#submitNewQuestion").click(function(){
-        questionsObjectList[questionsObjectList.length] = new Question(questionsObjectList.length, $("#answerText").val());
-        humane.log("Questions ajoutée !");
-    });
-
-    $("#btnParams").click(function(){
-        if(parametizerIsHidding) {
-            $(".parametizer").toggle("slow");
-        }else {
-            $(".parametizer").hide("slow");
-        }
-    });
-
-    $(".parametizer").hide("slow");
-
-    welcome();
+    bindAddingQuestionActionToButton();
+    humane.log("Bienvenue");
     itteration(); // Infinite loop
 });
 
@@ -44,6 +29,13 @@ function requestHost(question){
     });
 }
 
+function bindAddingQuestionActionToButton() {
+    $("#submitNewQuestion").click(function () {
+        questionsObjectList[questionsObjectList.length] = new Question(questionsObjectList.length, $("#answerText").val());
+        humane.log("Questions ajoutée !");
+    });
+}
+
 function itteration(){
     for(var i = 0; i < questionsObjectList.length; i++){
         requestHost(questionsObjectList[i]);
@@ -55,7 +47,4 @@ function itteration(){
     setTimeout(function() {
         itteration();
     }, 2000);
-}
-function welcome(){
-    humane.log("Bienvenue");
 }
