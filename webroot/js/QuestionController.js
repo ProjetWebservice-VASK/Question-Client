@@ -9,8 +9,20 @@ $(function() {
 
 function bindAddingQuestionActionToButton() {
     $("#submitNewQuestion").click(function () {
-        questionsObjectList[questionsObjectList.length] = new QuestionModel(questionsObjectList.length, $("#answerText").val());
-        humane.log("Questions ajoutée !");
+        newQuestion = new QuestionModel(questionsObjectList.length, $("#answerText").val());
+
+        HTTPManager = new HTTPResolver(questionsObjectList);
+        HTTPManager.requestEveryHost();
+
+        sendingResult = HTTPManager.postRequest(newQuestion);
+
+        if(sendingResult){
+            questionsObjectList[questionsObjectList.length] = newQuestion;
+            humane.log("Questions ajoutée !");
+        }else{
+            humane.log("Probléme d'accés au serveur !");
+        }
+
     });
 }
 
