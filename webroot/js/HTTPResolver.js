@@ -25,6 +25,6 @@ HTTPResolver.prototype.requestHost = function (question){
 
 HTTPResolver.prototype.requestEveryHost = function (){
     for(var i = 0; i < questionsArray.length; i++){
-        requestHost(questionsArray[i]);
+        this.requestHost(questionsArray[i]);
     }
 }
