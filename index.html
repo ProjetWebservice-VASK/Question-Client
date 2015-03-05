@@ -1,71 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head lang="fr">
-    <meta charset="UTF-8">
-    <title>i2037</title>
-    <link rel="shortcut icon" type="image/x-icon" href="webroot/img/alien.png" />
+    <head lang="fr">
+        <meta charset="UTF-8">
+        <title>i2037</title>
+        <link rel="shortcut icon" type="image/x-icon" href="webroot/img/alien.png" />
 
-    <!-- CSS -->
-    <link href="webroot/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet"/>
-    <link href="webroot/css/style.css" type="text/css" rel="stylesheet"/>
-    <link href="webroot/css/lib/notify.css" type="text/css" rel="stylesheet"/>
-    <link href="webroot/css/lib/Animation.css" type="text/css" rel="stylesheet"/>
+        <!-- CSS -->
+        <link href="webroot/css/lib/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        <link href="webroot/css/style.css" type="text/css" rel="stylesheet"/>
+        <link href="webroot/css/lib/notify.css" type="text/css" rel="stylesheet"/>
+        <link href="webroot/css/lib/Animation.css" type="text/css" rel="stylesheet"/>
 
-    <!-- JS -->
-    <!-- ONLINE -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <!-- JS -->
+        <!-- ONLINE -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-    <!-- OFFLINE -->
-    <script src="webroot/js/lib/humane.js"></script>
-    <script src="webroot/js/QuestionModel.js"></script>
-    <script src="webroot/js/QuestionController.js"></script>
-    <script src="webroot/js/QuestionView.js"></script>
+        <!-- OFFLINE -->
+        <script src="webroot/js/lib/humane.js"></script>
+        <script src="webroot/js/QuestionModel.js"></script>
+        <script src="webroot/js/QuestionController.js"></script>
+        <script src="webroot/js/QuestionView.js"></script>
+        <script src="webroot/js/HTTPResolver.js"></script>
 
+        <!-- FONTS -->
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 
-    <!-- FONTS -->
-    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
-</head>
+        <!--
+         ___          __                    _____                         ________ _______   ________ _________
+        |   |  ____ _/  |_   ____ _______ _/ ____\_____     ____   ____   \_____  \\   _  \  \_____  \\______  \
+        |   | /    \\   __\_/ __ \\_  __ \\   __\ \__  \  _/ ___\_/ __ \   /  ____//  /_\  \   _(__  <    /    /
+        |   ||   |  \|  |  \  ___/ |  | \/ |  |    / __ \_\  \___\  ___/  /       \\  \_/   \ /       \  /    /
+        |___||___|  /|__|   \___  >|__|    |__|   (____  / \___  >\___  > \_______ \\_____  //______  / /____/
+        -->
+    </head>
 
-<body>
-    <div class="wrapper">
-        <div class="row">
-            <div class="col-md-1">
-                <a href="#myModal" data-toggle="modal">
-                    <button type="button" class="btn btn-default" aria-label="Left Align">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button>
-                </a>
-            </div>
-            <div class="col-md-11">
-                <h1 id="mainTitle" class="main-title txt-center bounceInRight">i2037</h1>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-11 div-center">
-                <div id="questions">
+    <body>
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-md-1">
+                    <a href="#myModal" data-toggle="modal">
+                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </a>
+                </div>
+                <div class="col-md-11">
+                    <h1 id="mainTitle" class="main-title txt-center bounceInRight">i2037</h1>
                 </div>
             </div>
-        </div>
-
-        <div id="myModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Votre question</h4>
-                    </div>
-                    <div class="modal-body">
-                        <textarea id="answerText" class="form-control" rows="3"></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-info" id="submitNewQuestion" data-dismiss="modal">Envoyer</button>
+            <div class="row">
+                <div class="col-md-11 div-center">
+                    <div id="questions">
+                        <!-- Dynamic content here -->
                     </div>
                 </div>
             </div>
+            <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Votre question</h4>
+                        </div>
+                        <div class="modal-body">
+                            <textarea id="answerText" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                            <button type="button" class="btn btn-info" id="submitNewQuestion" data-dismiss="modal">Envoyer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

@@ -1,4 +1,4 @@
-var firstQuestion = new Question(0, "Comment sa marche ?");
+var firstQuestion = new QuestionModel(0, "Comment sa marche ?");
 var questionsObjectList = [firstQuestion];
 
 $(function() {
@@ -31,17 +31,16 @@ function requestHost(question){
 
 function bindAddingQuestionActionToButton() {
     $("#submitNewQuestion").click(function () {
-        questionsObjectList[questionsObjectList.length] = new Question(questionsObjectList.length, $("#answerText").val());
+        questionsObjectList[questionsObjectList.length] = new QuestionModel(questionsObjectList.length, $("#answerText").val());
         humane.log("Questions ajoutée !");
     });
 }
 
 function itteration(){
-    for(var i = 0; i < questionsObjectList.length; i++){
-        requestHost(questionsObjectList[i]);
-    }
+    HTTPManager = new HTTPResolver(questionsObjectList);
+    HTTPManager.requestEveryHost();
 
-    HTMLManager = new QuestionsManager(questionsObjectList);
+    HTMLManager = new QuestionView(questionsObjectList);
     HTMLManager.displayQuestion();
 
     setTimeout(function() {

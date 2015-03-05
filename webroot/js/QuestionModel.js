@@ -1,4 +1,4 @@
-function Question(id, questionToAdd){
+function QuestionModel(id, questionToAdd){
     this.id = id;
     this.libelle = questionToAdd;
     this.answer = "Réponse en cours de traitement, veuillez revenir plus tard pour consulter la réponse !";

@@ -1,20 +1,21 @@
-function QuestionsManager(questionsList){
+function QuestionView(questionsList){
     this.questionsNode = "#questions";
     this.questions = questionsList;
 }
 
-QuestionsManager.prototype.displayQuestion = function (){
+QuestionView.prototype.displayQuestion = function (){
     this.cleanHTMLQUestionsList();
+
     for(var i = 0; i < this.questions.length; i++){
         this.appendToHTMLQuestionList(this.questions[i], i);
     }
 }
 
-QuestionsManager.prototype.cleanHTMLQUestionsList = function (){ 
+QuestionView.prototype.cleanHTMLQUestionsList = function (){
     $(this.questionsNode).html("");
 }
 
-QuestionsManager.prototype.appendToHTMLQuestionList = function (questionToAdd, index){
+QuestionView.prototype.appendToHTMLQuestionList = function (questionToAdd, index){
     var htmlOuput =
         "<div class='panel-group' id='accordion' role='tablist' aria-multiselectable='false'>" +
             "<div class='panel panel-default'>" +
