@@ -1,13 +1,12 @@
-function QuestionView(questionsList){
+function QuestionView(){
     this.questionsNode = "#questions";
-    this.questions = questionsList;
 }
 
-QuestionView.prototype.displayQuestion = function (){
+QuestionView.prototype.displayQuestion = function (questionsList){
     this.cleanHTMLQUestionsList();
 
-    for(var i = 0; i < this.questions.length; i++){
-        this.appendToHTMLQuestionList(this.questions[i], i);
+    for(var i = 0; i < questionsList.length; i++){
+        this.appendToHTMLQuestionList(questionsList[i], i);
     }
 }
 
@@ -22,11 +21,11 @@ QuestionView.prototype.appendToHTMLQuestionList = function (questionToAdd, index
                 "<div class='panel-heading' role='tab' id='heading"+ index +"'>" +
                     "<h4 class='panel-title'>" +
                         "<a data-toggle='collapse' data-parent='#accordion' href='#collapse"+ index +"' aria-expanded='false' aria-controls='collapse"+ index +"'>"
-                            + questionToAdd.libelle + "" +
+                            + questionToAdd.question +
                         "</a>" +
                     "</h4>" +
                 "</div>" +
-                "<div id='collapse"+ index +"' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading"+ index +"'>" +
+                    "<div id='collapse"+ index +"' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading"+ index +"'>" +
                     "<div class='panel-body'>"
                         + questionToAdd.answer + "" +
                     "</div>" +

@@ -1,16 +1,45 @@
-function HTTPResolver(questionsObjectList){
-    hostURI = "http://localhost/webService/questions/";
-    questionsArray = questionsObjectList;
+function HTTPResolver(){
+    hostURI = "https://dev-question-server.herokuapp.com/questions";
     lastPostRequestWasSuccess = false;
 }
 
-HTTPResolver.prototype.getRequest = function (question){
+HTTPResolver.prototype.getAllQuestionsFromServer = function (questionsObjectList){
     $.ajax
     ({
         type: "GET",
-        url: hostURI + question.id + ".php",
+        url: hostURI,
         async: true,
-        contentType: "application/json",
+        contentType: "application/hal+json",
+
+        success: function(data, textStatus, xhr){
+            if(xhr.status == 200 || xhr.status == 304) {
+                while(questionsObjectList.length > 0){
+                    questionsObjectList.pop();
+                }
+
+                for(var i = 0; i < data.questions.length; i++){
+                    var newQuestion = new QuestionModel(data.questions[i]._id, data.questions[i].question);
+                    newQuestion.answer = data.questions[i].answer;
+                    newQuestion.date = data.questions[i].date;
+                    newQuestion.processing = data.questions[i].processing;
+
+                    questionsObjectList.push(newQuestion);
+                }
+            }
+        },
+        error : function(res, statut, error){
+            console.log(res + statut + error);
+        }
+    });
+};
+
+HTTPResolver.prototype.getRequestForSingleQuestion = function (question){
+    $.ajax
+    ({
+        type: "GET",
+        url: hostURI + "/" + question.id,
+        async: true,
+        contentType: "application/hal+json",
 
         success: function(data, textStatus, xhr){
             if(xhr.status == 200) {
@@ -30,18 +59,19 @@ HTTPResolver.prototype.getRequest = function (question){
 }
 
 HTTPResolver.prototype.postRequest = function (questionToPost){
-    lastPostRequestWasSuccess = false;
-    questionData = {question: questionToPost.libelle, answer: questionToPost.answer, date: questionToPost.date, state: questionToPost.state};
+    var lastPostRequestWasSuccess = false;
+    questionData = {question: questionToPost.question, answer: questionToPost.answer, date: questionToPost.date};
 
     $.ajax
     ({
         type: "POST",
-        url: hostURI + "questions.php",
+        url: hostURI,
         async: false,
         data: questionData,
 
-        success: function(){
-            postRequestWasSucces = true;
+        success: function(data, textStatus, xhr){
+            if(xhr.status == 201)
+                lastPostRequestWasSuccess = true;
         },
 
         error : function(res, statut, error){
@@ -50,10 +80,4 @@ HTTPResolver.prototype.postRequest = function (questionToPost){
     });
 
     return lastPostRequestWasSuccess;
-}
-
-HTTPResolver.prototype.requestEveryHost = function (){
-    for(var i = 0; i < questionsArray.length; i++){
-        this.getRequest(questionsArray[i]);
-    }
 }
