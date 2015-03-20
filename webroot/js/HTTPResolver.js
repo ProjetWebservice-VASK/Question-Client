@@ -66,7 +66,7 @@ HTTPResolver.prototype.postRequest = function (questionToPost){
     ({
         type: "POST",
         url: hostURI,
-        async: false,
+        async: true,
         data: questionData,
 
         success: function(data, textStatus, xhr){
