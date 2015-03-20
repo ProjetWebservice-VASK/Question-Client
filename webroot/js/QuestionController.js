@@ -10,7 +10,7 @@ $(function() {
 
 function bindAddingQuestionActionToButton() {
     $("#submitNewQuestion").click(function () {
-        var newQuestion = new QuestionModel(questionsObjectList.length, null);
+        var newQuestion = new QuestionModel(questionsObjectList.length, $("#answerText").val());
         var sendingResult = HTTPManager.postRequest(newQuestion);
 
         if(sendingResult){
