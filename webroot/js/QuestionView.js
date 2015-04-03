@@ -15,6 +15,12 @@ QuestionView.prototype.cleanHTMLQUestionsList = function (){
 }
 
 QuestionView.prototype.appendToHTMLQuestionList = function (questionToAdd, index){
+
+    if(questionToAdd.answer == undefined)
+        var questionLibelate = "Question en cours de traitement ";
+    else
+        var questionLibelate = questionToAdd.answer + "";
+
     var htmlOuput =
         "<div class='panel-group' id='accordion' role='tablist' aria-multiselectable='false'>" +
             "<div class='panel panel-default'>" +
@@ -26,8 +32,8 @@ QuestionView.prototype.appendToHTMLQuestionList = function (questionToAdd, index
                     "</h4>" +
                 "</div>" +
                     "<div id='collapse"+ index +"' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading"+ index +"'>" +
-                    "<div class='panel-body'>"
-                        + questionToAdd.answer + "" +
+                    "<div class='panel-body'>" +
+                        questionLibelate +
                     "</div>" +
                 "</div>" +
             "</div>" +

@@ -12,12 +12,6 @@ function bindAddingQuestionActionToButton() {
     $("#submitNewQuestion").click(function () {
         var newQuestion = new QuestionModel(questionsObjectList.length, $("#answerText").val());
         var sendingResult = HTTPManager.postRequest(newQuestion);
-
-        if(sendingResult){
-            humane.log("Questions ajoutée !");
-        }else{
-            humane.log("Probléme d'accés au serveur !");
-        }
     });
 }
 
