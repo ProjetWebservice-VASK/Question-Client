@@ -71,13 +71,13 @@ HTTPResolver.prototype.postRequest = function (questionToPost){
 
         success: function(data, textStatus, xhr){
             if(xhr.status == 201){
-                humane.log("Questions ajoutée !");
+                humane.log("Question ajoutée !");
                 lastPostRequestWasSuccess = true;
             }
         },
 
         error : function(res, statut, error){
-            humane.log("Probléme d'accés au serveur !");
+            humane.log("Problème d'accés au serveur !");
             console.log("error :" + res + statut + error);
         }
     });
