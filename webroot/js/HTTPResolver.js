@@ -1,5 +1,5 @@
 function HTTPResolver(){
-    hostURI = "https://dev-question-server.herokuapp.com/questions";
+    hostURI = "https://question-server.herokuapp.com/questions";
     lastPostRequestWasSuccess = false;
 }
 
